@@ -14,7 +14,11 @@ const mongodbUrl = process.env.MONGODB_URI;
 
 connectDB(mongodbUrl)
 const app= express();
-app.use(cors())
+app.use(cors({
+  origin:'https://book-store-backend-gamma-neon.vercel.app',
+  credentials: true
+}
+))
 app.use(express.json());
 app.use(cookieParser())
 
