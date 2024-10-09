@@ -15,7 +15,7 @@ export const placeOrder = async (req, res) => {
       });
       //clear cart
       await User.findByIdAndUpdate(user._id, {
-        $pull: { cart: orderFromDB._id },
+        $pull: { cart: orderData._id },
       });
     }
     res.status(200).json({ message: "Order placed successfully" });
