@@ -11,8 +11,8 @@ export const postBook = async (req, res) => {
     if (user.role !== "admin") {
       return res.status(403).json({ error: "Only admin can add books" });
     }
-    const { url, title, author, price, desc, language } = req.body;
-    if (!url || !title || !author || !price || !desc || !language) {
+    const { url, title, author, price, description, language } = req.body;
+    if (!url || !title || !author || !price || !description || !language) {
       return res
         .status(400)
         .json({ error: "Please provide all required fields" });
@@ -22,7 +22,7 @@ export const postBook = async (req, res) => {
     if (isTitle) {
       return res.status(400).json({ error: "Book title already exists" });
     }
-    const book = new Book({ url, title, author, price, desc, language });
+    const book = new Book({ url, title, author, price, description, language });
     await book.save();
     res.status(201).json({ success: true, message: "book created", book });
   } catch (e) {
