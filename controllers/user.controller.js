@@ -100,8 +100,10 @@ export const updateAddresses = async(req, res) => {
       if (!user) {
         return res.status(404).json({ error: "User not found" });
       }
-      const {address}=req.body
-      if(address){
+      const { username, email, address }=req.body
+      if(address,email,username){
+        user.username=username
+        user.email=email
         user.address=address
     }
     await user.save()
