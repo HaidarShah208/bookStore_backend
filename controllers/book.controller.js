@@ -41,10 +41,10 @@ export const updateBooks = async (req, res) => {
       return res.status(403).json({ error: "Only admin can add books" });
     }
     const { id } = req.params;
-    const { url, title, author, price, desc, language } = req.body;
+    const { url, title, author, price, description, language } = req.body;
     const book = await Book.findByIdAndUpdate(
       id,
-      { $set: { url, title, author, price, desc, language } }, // Wrap fields in an object
+      { $set: { url, title, author, price, description, language } }, // Wrap fields in an object
       { new: true, runValidators: true } // Options to return updated book and validate input
     );
     if (!book) {
