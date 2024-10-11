@@ -45,7 +45,7 @@ export const getAllOrders = async (req, res) => {
   try {
     const orders = await Order.find()
       .populate({
-        path: "books",
+        path: "book",
       })
       .populate({
         path: "user",
