@@ -112,3 +112,21 @@ export const updateAddresses = async(req, res) => {
         return res.status(500).json({ error: err.message });
     }
 }
+
+//upload awatar
+export const uploadAvatar = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Update user's avatar URL
+    user.awatar = req.file.path;
+    await user.save();
+
+    res.json({ message: 'Avatar uploaded successfully', avatarUrl: user.awatar });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
