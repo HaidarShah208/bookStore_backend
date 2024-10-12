@@ -1,6 +1,7 @@
 import express from 'express';
 import { Login, seeProfile, Signup, updateAddresses, uploadAvatar } from '../controllers/user.controller.js';
 import { isAuthenticated } from '../middleware/auth.js';
+import upload from '../utils/cloudneryUpload.js';
 const router = express.Router();
 
 
