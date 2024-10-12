@@ -15,7 +15,7 @@ const mongodbUrl = process.env.MONGODB_URI;
 connectDB(mongodbUrl)
 const app= express();
 app.use(cors({
-  origin:'https://book-store-frontend-git-master-alis-projects-42054f63.vercel.app/',
+  origin:'https://book-store-frontend-git-master-alis-projects-42054f63.vercel.app',
   credentials: true
 }
 ))
